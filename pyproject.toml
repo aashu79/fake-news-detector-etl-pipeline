@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "fakenews-etl"
+version = "0.1.0"
+description = "ETL pipeline for Fake News Detection using PySpark, PostgreSQL, FastAPI, all managed with Poetry"
+authors = ["Aashu Kumar Sah <aashusah435@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.110.0"
+uvicorn = "^0.29.0"
+pandas = "^2.2.0"
+scikit-learn = "^1.4.0"
+sqlalchemy = "^2.0.0"
+psycopg2-binary = "^2.9.9"
+joblib = "^1.3.2"
+nltk = "^3.8.1"
+kaggle = "^1.6.12"
+pyspark = "^3.5.1"
+datasets = "^2.10.0"
+setfit = "^0.7.0"
+sentence-transformers = "^2.6.0"
+
+[tool.poetry.scripts]
+fakenews-extract = "etl.extract:main"
+fakenews-transform = "etl.transform:main"
+fakenews-load = "etl.load:main"
+fakenews-train = "model.train:main"
+fakenews-api = "api.main:main"
+
+[[tool.poetry.packages]]
+include = "etl"
+
+[[tool.poetry.packages]]
+include = "model"
+
+[[tool.poetry.packages]]
+include = "api"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
